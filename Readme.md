@@ -14,7 +14,7 @@ python manage.py runservive
 
 ### 主要功能概述：
 
-![功能](img\功能.png)
+![功能](https://github.com/jokersio-tsy/Student-Information-Management-Platform/tree/main/img/功能.png)
 
 ### 部分页面截图：
 
