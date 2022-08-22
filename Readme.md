@@ -20,16 +20,16 @@ python manage.py runservive
 
 **登陆与注册：**
 
-![登陆注册](img\登陆注册.png)
+![登陆注册](https://github.com/jokersio-tsy/Student-Information-Management-Platform/tree/main/img/登陆注册.png)
 
 **主页：**
 
-![主页](img\主页.png)
+![主页](https://github.com/jokersio-tsy/Student-Information-Management-Platform/tree/main/img/主页.png)
 
 **学生信息展示（数据为虚构）：**
 
-![学生信息](img\学生信息.png)
+![学生信息](https://github.com/jokersio-tsy/Student-Information-Management-Platform/tree/main/img/学生信息.png)
 
 **疫情腾讯云图：**
 
-![云图](img\云图.png)
+![云图](https://github.com/jokersio-tsy/Student-Information-Management-Platform/tree/main/img/云图.png)
