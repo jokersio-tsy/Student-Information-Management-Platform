@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width,user-scalable=no,initial-scale=1.0,minium-scale=1.0,maximum-scale=1.0">
+    <title>information_getter_web</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/information.css' %}" />
+    <link href="{%  static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{%  static 'css/city-picker.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{%  static 'css/main.css' %}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+
+    <!-- 导入JQuery库 -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{%  static 'js/jquery.js' %}"></script>
+    <script src="{%  static 'js/bootstrap.js' %}"></script>
+    <script src="{%  static 'js/city-picker.data.js' %}"></script>
+    <script src="{%  static 'js/city-picker.js' %}"></script>
+    <script src="{%  static 'js/main.js' %}"></script>
+    <script>
+        // 页面预加载函数
+        $(document).ready(function () {
+            $("#picFile").change(function () {
+                // 使用Ajax实现文件上传操作
+                // 创建一个FormData对象，用于存放上传图片的数据
+                var form_data = new FormData();
+                // 读取上传图片的数据
+                var file_info = $("#picFile")[0].files[0];
+                // 将读取到的二进制数据添加到formData对象中
+                form_data.append("file", file_info);
+                // 使用Ajax发送异步请求并携带请求数据
+                $.ajax({
+                    async: true,
+                    url: "/app/ajax/picupload/",
+                    type: "post",
+                    headers: { "X-CSRFToken": $.cookie("csrftoken") },
+                    data: form_data,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        console.log(data);
+                        // alert(data);
+                        // 获取图片元素修改其src属性值
+                        $("#pic").attr("src", data);
+                        // 分割用户头像的url地址
+                        var photoname = data.split("/")[3];
+                        console.log(photoname);
+                        // 将用户头像图片名称添加到隐藏域组件中
+                        $("#photoname").attr("value", photoname);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p class="return" style=" background-color:rgb(11, 98, 204); height: 50px;">
+        <a href="/app/homepage" style="vertical-align:middle;">
+            <img class="imgstyle" id="return" src="{% static 'image/返回.png' %}" width="30"/>
+            <label class="input_font"  style="font-size: 18px; color:aliceblue;">返回主页</label><br/>
+        </a>
+        
+    </p>
+    <h1>添加学生信息</h1>
+    
+
+    <!-- 添加学生信息的表单 -->
+        <form id="add_data_student" name="add_data_student" method="post" action="/app/add_data_student/">
+            {% csrf_token %}
+            <div style="width:40%; float:left;">
+                <p class="info">
+                    <label class="input_font">学生姓名：</label>
+                    <input type="text" id="stu_name" name="stu_name" placeholder="输入学生姓名" class="listinput" required /><br/>
+                </p>
+                <p class="info">
+                    <label class="input_font">性别：</label>
+                    <input type="text" id="stu_gender" name="stu_gender" placeholder="输入性别" class="listinput" required /><br/>
+                </p>
+
+                <p class="info">
+                    <label class="input_font">学号：</label>
+                    <input type="text" id="stu_id" name="stu_id" placeholder="输入8位学号" class="listinput" required /><br/>
+                </p>
+                <p class="info">
+                    <label class="input_font">年龄：</label>
+                    <input type="text" id="age" name="age" placeholder="输入年龄" class="listinput" required /><br/>
+                </p>
+                <p class="info">
+                    <label class="input_font">身份证：</label>
+                    <input type="text" id="id" name="id" placeholder="输入18位身份证" onchange="check_len()" class="listinput" required><br/>
+                <p class="len_err" style="color:red"></p>
+                <script>
+                    function check_len() {
+                        var id_c = document.querySelector("#id");
+                        var len_err = document.querySelector(".len_err");
+                        if (id_c.value.length != 18) {
+                            len_err.innerHTML = "请输入正确的身份证号"
+                        }
+                        else {
+                            len_err.innerHTML = ""
+                        }
+                    }
+
+                </script>
+                </p>
+                <p class="info">
+                    <label class="input_font">学院：</label>
+                    <input type="text" id="college" name="college" placeholder="输入学院" class="listinput" required /><br/>
+                </p>
+                
+                
+                <p class="info">
+                    <label class="input_font">年级：</label>
+                    <input type="text" id="grade" name="grade" placeholder="输入所在年级" class="listinput" required /><br/>
+                </p>
+                <p class="info">
+                    <label class="input_font">专业班级：</label>
+                    <input type="text" id="major" name="major" placeholder="输入专业" class="listinput" required />
+                    <input type="text" id="class_number" name="class_number" placeholder="输入班级序号" class="listinput" required /><br/>
+                </p>
+                <p class="info">
+                    <label class="input_font">政治面貌：</label>
+                    <input type="text" id="politics_statue" name="politics_statue" placeholder="选择政治面貌"
+                        list="politics_statue_lst" class="listinput" required /><br/>
+                    <datalist id="politics_statue_lst">
+                        <option>群众</option>
+                        <option>中共党员</option>
+                        <option>中共预备党员</option>
+                        <option>共青团员</option>
+                        <option>民革党员</option>
+                        <option>民盟盟员</option>
+                        <option>民建会员</option>
+                        <option>民进会员</option>
+                        <option>农工党党员</option>
+                        <option>致公党党员</option>
+                        <option>九三学社社员</option>
+                        <option>台盟盟员</option>
+                        <option>无党派人士</option>
+                    </datalist>
+                </p>
+                <p class="info">
+                    <label class="input_font">电话号码：</label>
+                    <input type="text" id="phone" name="phone" placeholder="输入电话号码" class="listinput" required /><br/>
+                </p>
+                <p class="info">
+                    <label class="input_font">电子邮箱：</label>
+                    <input type="text" id="email" name="email" placeholder="输入电子邮箱" class="listinput" required /><br/>
+                </p>
+
+                    <label class="input_font">地区：</label>
+                    <div class="docs-methods">
+                        <div id="distpicker">
+                            <div class="form-group">
+                                <div style="position: relative;">
+                                    <input name="area" id="city-picker3" class="form-control" readonly type="text" value="" data-toggle="city-picker">
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                <p>
+                    <button class="btnsubmit" style="width:80px;height:25px;margin-left:120px;font-size:14px">添加</button>
+                </p>
+
+            </div>
+
+            <div>
+                <p class="imgp">
+                    <label class="input_font">头像：</label><br/>
+                    <!-- 用户头像图片 -->
+                    <img class="imgstyle" id="pic" src="{% static 'image/user.png' %}" /><br />
+                    <!-- 表单输入元素文件域组件（本地文件选择器） -->
+                    <input type="file" id="picFile" name="picFile" style="margin-top: 10px;" required /><br />
+        
+                    <!-- 服务器响应信息提示 -->
+                    <label class="success_msg">{{ success_msg }}</label><br />
+                    <label class="error_msg">{{ error_msg }}</label><br />
+                </p>
+                <br/>
+
+                <!-- 展示二维码 -->
+                <p>
+                    <img class="imgstyle" id="qrcode" src="{% static 'image/qrcode.png' %}" width="40" style="margin-left:80px"/><br />
+                    <!-- <button class="btnsubmit" style="margin-left:1000px">二维码</button> -->
+                    <a id='link' href="javascript:;">
+                        <input type="button" value="二维码" style="width:60px;margin-left:70px;" >
+                    </a>
+                </p>
+
+            </div>
+
+        </form>
+
+        
+        <p>{{ message }}</p>
+
+    <div class="showqr">
+        <div class="title">
+            <span><a href="javascript:void(0);" class="close-login">关闭</a></span>
+        </div>
+        <img src="/app/makeqrcode/" class="qr_img" width="300px" height="300px;">
+    </div>
+    <!-- 遮盖层 -->
+    <div id="bg" class="login-bg"></div>
+    <script>
+        var alink = document.querySelector('#link');
+        var login = document.querySelector('.showqr');
+        var bg = document.querySelector('#bg');
+        var closebtn = document.querySelector('.close-login')
+        var title = document.querySelector('.title');
+        // 点击弹出层这个链接 link  让mask 和login 显示出来
+        alink.addEventListener('click', function () {
+            bg.style.display = 'block';
+            login.style.display = 'block';
+        })
+        // 点击 closeBtn 就隐藏 mask 和 login 
+        closebtn.addEventListener('click', function () {
+            bg.style.display = 'none';
+            login.style.display = 'none';
+        })
+        // 拖拽事件
+        // 按下鼠标左键:获得x为鼠标到login盒子左部的距离,y为login到盒子顶部的距离
+        title.addEventListener('mousedown', function (e) {
+            var x = e.pageX - login.offsetLeft;
+            var y = e.pageY - login.offsetTop;
+            // 鼠标移动函数:login到窗口左部的距离即为鼠标到窗口左部的距离减去x，要加上字符串px
+            function move(e) {
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+            }
+            document.addEventListener('mousemove', move);
+            // 鼠标弹起，将移动事件remove
+            document.addEventListener('mouseup', function () {
+                document.removeEventListener('mousemove', move);
+            })
+        })
+    </script>
+
+
+
+</body>
+
+</html>

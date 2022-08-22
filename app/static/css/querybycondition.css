@@ -1,0 +1,44 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../image/bg.jpg) no-repeat top center;
+}
+
+p{
+    vertical-align:baseline;
+    width: 80%;
+    color: aliceblue;
+    font-size: 18px;
+}
+h1{
+    color: aliceblue;
+    position: relative;
+    left: 40%;
+    margin-top: 1.5%;
+    margin-bottom: 2.5%;
+    font-size: 42px;
+}
+
+#queryStudents{
+    position: relative;
+    left: 37%;
+}
+
+.btnsubmit{
+    width: 8%;
+    height: 2%;
+    font-size: 16px;
+}
+
+input{
+    width: 15%;
+    height: 100%;
+
+}
+
+.imgp img{
+    width: 125px;
+    height: 125px;
+    margin: 10px;
+    margin-top: 5px;
+}

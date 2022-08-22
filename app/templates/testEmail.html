@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发送邮件</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/email.css' %}"/>
+</head>
+<body>
+    <!-- 蓝条条 -->
+    <div class="head" style="background-color:rgb(11, 98, 204); height: 55px;">
+        <a href="/app/homepage/" style="color:aliceblue ;"><img src="{% static 'image/返回.png' %}" class="returnimg" alt=""><p class="tp">返回主页</p> </a>
+    </div>
+
+    <!--前端在这个页面实现对邮件内容的编辑，post到后端-->
+    <form action="/app/sendEmail/" method="post" class="email_submit" name="email_submit">
+        <h2>编辑邮件</h2>
+        <div class="email">
+            <div class="inputcontent">
+                <!-- <div class="emailinput">
+                    <label for="">邮箱地址</label>
+                    <input type="email" placeholder="请输入您的邮件地址" name="email_addr" id="email_addr" class="listinput">
+                </div> -->
+                <div class="emailinput">
+                    <label for="">发送内容</label>
+                    <!-- <input type="text" placeholder="请输入发送内容" name="content" id="content" class="listinput2"> -->
+                    <textarea placeholder="请输入发送内容" name="content" id="content" 
+                        style="min-width: 350px;max-width: 350px;min-height: 225px;max-height: 225px;line-height:35px;
+                            border: #ebebeb 1px solid;text-indent: 5px;">
+                    </textarea>
+                </div>
+            </div>
+            <div class="send">
+                <button type="submit">发送</button>
+            </div>
+            {{ message }}
+        </div>
+    </form>
+
+</body>
+</html>

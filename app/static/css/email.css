@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../image/bg2.jpg) no-repeat top center;
+}
+
+h2{
+    text-align: center;
+}
+.email{
+    width: 50%;
+    height: 65%;
+    border: #ebebeb solid 1px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px #ddd;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+.emailinput{
+    overflow: hidden;
+    margin: 40px 0px 20px 100px;
+}
+
+.emailinput label{
+    float: left;
+    width: 90px;
+    padding-right: 10px;
+    text-align: right;
+    line-height: 35px;
+    height: 35px;
+    font-size: 14px;
+}
+
+.emailinput input.listinput{
+    float: left;
+    line-height: 35px;
+    height: 35px;
+    width: 350px;
+    border: #ebebeb 1px solid;
+    text-indent: 5px;
+}
+
+.email .send{
+    width: 50%;
+    margin: 30px auto 0px auto;
+    line-height: 40px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.tp{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.8em; 
+    font-family: 'Microsoft YaHei';
+    color: aliceblue;
+}
+
+.head{
+    display: block;
+    height: 1.25rem;
+    width: 100%;
+    cursor: pointer;
+}
+.returnimg{
+    display: inline-block;
+    margin-top: .125rem;
+    margin-left: .125rem;
+    width: .625rem;
+    height: .625rem;
+
+}
+.head p{
+    position: absolute;
+    top: .25rem;
+    display: inline-block;
+    width: 1.625rem;
+    height: .625rem;
+    font-size: .3125rem;
+}

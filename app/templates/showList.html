@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/showStudents.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+  
+</head>
+<body>
+    <h1>学生信息表</h1>
+    <!-- 表格 -->
+    <table >
+        <tr class="header">
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">学生姓名</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">性别</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">头像</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">学号</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">年龄</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">身份证</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">学院</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">省</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">市</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">年级</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">专业</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">班级</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">政治面貌</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">电话号码</td>
+            <td style="background-color:rgb(108, 124, 219); color:aliceblue; text-align:center; height:25px;">电子邮箱</td>
+        </tr>
+        
+        {% for stu in students %}       
+        <tr class="datas">
+            <td style="text-align:center; background-color:rgb(210, 210, 235); height:25px;">
+                <label style="font-weight:bold;">{{ stu.stu_name }}</label>
+            </td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.stu_gender }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.pic }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.stu_id}}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.age }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.id }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.college }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.province }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.region }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.grade }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.major }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.class_number }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.politics_statue }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.phone }}</td>
+            <td style="text-align:center; background-color:rgb(210, 210, 235);">{{ stu.email }}</td>
+        </tr>
+        {% empty %}
+        <tr class="empty_">
+            <td colspan="15" style="text-align:center; background-color:rgb(210, 210, 235); height:25px;">
+                    <label class="tooltip" >暂无数据</label>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+
+</body>
+</html>

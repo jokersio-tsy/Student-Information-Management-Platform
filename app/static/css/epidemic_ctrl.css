@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+body{
+    background: url(../image/页面背景.png) no-repeat top center;
+}
+.active{
+    color: rgb(59, 128, 255);
+    background-color: rgb(190, 212, 249);
+
+}
+.head{
+    display: block;
+    height: 2.25rem;
+    width: 100%;
+    cursor: pointer;
+}
+.returnimg{
+    display: inline-block;
+    margin-top: .125rem;
+    margin-left: .125rem;
+    width: .625rem;
+    height: .625rem;
+
+}
+.head p{
+    position: absolute;
+    top: .25rem;
+    display: inline-block;
+    width: 1.625rem;
+    height: .625rem;
+    font-size: .3125rem;
+}
+.container{
+    position: relative;
+    width: 100%;
+    height: 10.25rem;
+    background-color: aliceblue;
+}
+.title{
+    margin-left: .025rem;
+    display: block;
+    width: 1.7rem;
+    height: 100%;
+    float: left;
+    cursor: pointer;
+}
+.title li{
+    cursor: pointer;
+    font-size: .20rem;
+    width: 1.6rem;
+    line-height: .45rem;
+    text-align:center;
+    vertical-align: middle;
+    border-bottom: 1px solid rgb(59, 128, 255);
+}
+
+.title li p{
+
+    text-align:center;
+    vertical-align: middle;
+}
+.content{
+    position: relative;
+    float: left;
+    display: inline;
+    width: 90%;
+    height: 100%;
+    border: .0125rem solid rgb(160, 160, 160) ;
+    box-shadow: 0px 0px 20px #ddd;
+}
+.content li{
+    width: 95%;
+    height: 95%;
+    margin-left: .1875rem;
+    margin-top: .1875rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.tooltip{
+    width: 100%;
+    display: block;
+    margin-top: 5px;
+    color: rgb(141, 141, 141);
+}
+table{
+    table-layout:fixed;
+    margin: .125rem;
+    width: 95%;
+
+    overflow-y:scroll;
+}
+.input_font{
+    font-size: 1.0em;
+    color: rgb(59, 59, 59);
+}
+
+input{
+    outline: none;
+}
+
+form{
+    margin-left: 20px;
+}
+
+.btnsubmit{
+    width: 80px;
+    height: 25px;
+    border:0px;
+    background-color: rgb(59, 128, 255);
+    color: aliceblue;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.t_title{
+    text-align: center;
+    font-weight: bold;
+}
+.t_content{
+    text-align: center;
+}
+
+.header td{
+    width: 6%;
+    background-color:rgb(59, 128, 255); 
+    color:aliceblue; 
+    text-align:center; 
+    height: .3125rem;
+}
+.datas td{
+    width: 6%;
+    text-align:center; 
+    background-color:rgb(210, 210, 235); 
+    height: .3125rem;
+}
+
+.send-notice{
+    float: right;
+}
+.send-notice{
+    position: absolute;
+    right: 20px;
+    
+    float: right;
+}

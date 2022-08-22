@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/update.css' %}"/>
+    <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+    <!-- 导入JQuery库 -->
+    <script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script>
+        // 页面预加载函数
+        $(document).ready(function(){
+            $("#picFile").change(function(){
+                // 使用Ajax实现文件上传操作
+                // 创建一个FormData对象，用于存放上传图片的数据
+                var form_data = new FormData();
+                // 读取上传图片的数据
+                var file_info = $("#picFile")[0].files[0];
+                // 将读取到的二进制数据添加到formData对象中
+                form_data.append("file", file_info);
+                // 使用Ajax发送异步请求并携带请求数据
+                $.ajax({
+                    async: true,
+                    url: "/app/ajax/picupload/",
+                    type: "post",
+                    headers: {"X-CSRFToken":$.cookie("csrftoken")},
+                    data: form_data,
+                    processData: false,
+                    contentType: false,
+                    success: function(data){
+                        console.log(data);
+                        // alert(data);
+                        // 获取图片元素修改其src属性值
+                        $("#pic").attr("src", data);
+                        // 分割用户头像的url地址
+                        var photoname = data.split("/")[3];
+                        console.log(photoname);
+                        // 将用户头像图片名称添加到隐藏域组件中
+                        $("#photoname").attr("value", photoname);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="head" style="background-color:rgb(11, 98, 204); height: 55px;">
+        <a href="/app/homepage/" style="color:aliceblue ;"><img src="{% static 'image/返回.png' %}" class="returnimg" alt=""><p class="tp">返回主页</p> </a>
+    </div>
+
+    <h1>更新学生信息</h1>
+    <!-- 添加学生信息的表单 -->
+    <form id="update" name="update" method="post" action="/app/update/">
+        {% csrf_token %}
+        <p>
+            <label class="input_font">学号：</label>
+            <label class="tooltip" style="font-weight:bold">{{ student.stu_id }}</label>
+            <!-- 设置一个隐藏域存放 -->
+            <input type="hidden" id="stu_id" name="stu_id" value="{{ student.stu_id }}"/>
+        </p>
+        <p class="info">
+            <label>学生姓名：</label>
+            <input type="text" id="stu_name" name="stu_name" value="{{ student.stu_name }}" placeholder="输入学生姓名" required/>
+        </p>
+        <p class="info">
+            <label>性别：</label>
+            <input type="text" id="stu_gender" name="stu_gender" value="{{ student.stu_gender }}" placeholder="输入性别" required/>
+        </p>
+{#        <p class="imgp">#}
+{#            <label class="input_font">头像：</label>#}
+{#            <!-- 用户头像图片 -->#}
+{#            <img class="imgstyle" id="pic" src="{% static 'image/default-photo.png' %}" /><br/>#}
+{#            <!-- 表单输入元素文件域组件（本地文件选择器） -->#}
+{#            <input type="file" id="picFile" name="picFile" style="margin-top: 10px;" value="{{ student.pic }}" required/><br/>#}
+{#            #}
+{#            <!-- 服务器响应信息提示 -->#}
+{#            <label class="success_msg">{{ success_msg }}</label><br/>#}
+{#            <label class="error_msg">{{ error_msg }}</label><br/>#}
+{#        </p>#}
+
+        <p class="info">
+            <label>年龄：</label>
+            <input type="text" id="age" name="age" placeholder="输入年龄" value="{{ student.age }}" required/>
+        </p>
+        <p class="info">
+            <label>身份证：</label>
+            <input type="text" id="id" name="id" placeholder="输入身份证" value="{{ student.id }}" required/>
+        </p>
+        <p class="info">
+            <label>学院：</label>
+            <input type="text" id="college" name="college" placeholder="输入学院" value="{{ student.college }}" required/>
+        </p>
+        <p class="info">
+            <label>地区：</label>
+            <input type="text" id="province" name="province" placeholder="输入省" value="{{ student.province }}" required/>省
+            <input type="text" id="region" name="region" placeholder="输入市" value="{{ student.region }}" required/>市
+        </p>
+        <p class="info">
+            <label>年级：</label>
+            <input type="text" id="grade" name="grade" placeholder="输入所在年级" value="{{ student.grade }}" required/>
+        </p>
+        <p class="info">
+            <label>专业班级：</label>
+            <input type="text" id="major" name="major" placeholder="输入专业" value="{{ student.major }}" required/>专业
+            <input type="text" id="class_number" name="class_number" placeholder="输入班级序号" value="{{ student.class_number }}" required/>班
+        </p>
+        <p class="info">
+            <label>政治面貌：</label>
+            <input type="text" id="politics_statue" name="politics_statue" placeholder="输入政治面貌" value="{{ student.politics_statue }}" required/>
+        </p>
+        <p class="info">
+            <label>电话号码：</label>
+            <input type="text" id="phone" name="phone" placeholder="输入电话号码" value="{{ student.phone }}" required/>
+        </p>
+        <p class="info">
+            <label>电子邮箱：</label>
+            <input type="text" id="email" name="email" placeholder="输入电子邮箱" value="{{ student.email }}" required/>
+        </p>
+        <p>
+            <button class="btnsubmit">更新</button>
+        </p>
+    </form>
+    <p>{{ message }}</p>
+</body>
+</html>

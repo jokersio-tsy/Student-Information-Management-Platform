@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head >
+		<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>information_manage</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/epidemic_ctrl.css' %}" />
+
+        <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+	</head>
+
+	<body>
+    <div class="head" style="background-color:rgb(11, 98, 204); height: 55px;" >
+        <a href="/app/homepage/" style="color:aliceblue ;"><img src="{% static 'image/返回.png' %}" class="returnimg" alt=""><p>返回主页</p> </a>
+    </div>
+
+		<div class="container">
+			<ul class="title">
+				<li class="active"> <p>风险地区</p> </li>
+				<!-- <li> <p>中风险地区</p> </li>
+                <li> <p>低风险地区</p> </li> -->
+				<li> <p>常态化防控地区</p> </li>
+                <li> <p>疫情风险地区</p> </li>
+                <li> <p>疫情风险云图</p> </li>
+			</ul>
+
+			<ul class="content">
+                <!-- 高风险地区 -->
+				<li>    <!-- 表格 -->
+                    <table>
+                        <form action="" method="post"><button class="send-notice1"><a href="http://127.0.0.1:8000/app/email/">发送通知</a></button></form>
+                        <tr class="header">
+                            <td >学生姓名</td>
+                            <td >学号</td>
+                            <td >学院</td>
+                            <td >年级</td>
+                            <td >专业</td>
+                            <td >班级</td>
+                            <td >家庭住址</td>
+                            <td >风险等级</td>
+                            <td >通知<input type="checkbox" name="selall1" id="selall1" onclick="checkAll1()">全选</td>
+                        </tr>
+                
+                        {% for stu in students %}
+                        <tr class="datas">
+                            <td >
+                                <label style="font-weight:bold;">{{ stu.stu_name }}</label>
+                            </td>
+                            <td >{{ stu.stu_id}}</td>
+                            <td >{{ stu.college }}</td>
+                            <td >{{ stu.grade }}</td>
+                            <td >{{ stu.major }}</td>
+                            <td >{{ stu.class_number }}</td>
+                            <!-- 家庭住址 -->
+                            <td >{{ stu. }}</td> 
+                            <!-- 风险等级 -->
+                            <td >{{ stu. }}</td>
+                            <!-- 通知 -->
+                            <form action="" method="post">
+                                <td style="text-align:center; background-color:rgb(210, 210, 235);">
+                                    <input type="checkbox" name="notice1" id="notice1" onclick="checkone1()">
+                                </td>
+                            </form>
+                        </tr>
+                        {% empty %}
+                        <tr class="empty_">
+                            <td colspan="9" style="text-align:center; background-color:rgb(210, 210, 235); width: 800px;height:25px;">
+                                <label class="tooltip">暂无数据</label>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table></li>
+                <!-- 中风险地区 -->
+				<li style="display: none;"> <!-- 表格 -->
+                    <table>
+<form action="" method="post"><button class="send-notice2"><a href="http://127.0.0.1:8000/app/email/">发送通知</a></button></form>
+                        <tr class="header">
+                            <td >学生姓名</td>
+                            <td >学号</td>
+                            <td >学院</td>
+                            <td >年级</td>
+                            <td >专业</td>
+                            <td >班级</td>
+                            <td >家庭住址</td>
+                            <td >风险等级</td>
+                            <td >通知<input type="checkbox" name="selall2" id="selall2" onclick="checkAll2()">全选</td>
+                        </tr>
+                
+                        {% for stu in students %}
+                        <tr class="datas">
+                            <td >
+                                <label style="font-weight:bold;">{{ stu.stu_name }}</label>
+                            </td>
+                            <td >{{ stu.stu_id}}</td>
+                            <td >{{ stu.college }}</td>
+                            <td >{{ stu.grade }}</td>
+                            <td >{{ stu.major }}</td>
+                            <td >{{ stu.class_number }}</td>
+                            <!-- 家庭住址 -->
+                            <td >{{ stu. }}</td> 
+                            <!-- 风险等级 -->
+                            <td >{{ stu. }}</td>
+                            <!-- 通知 -->
+                            <form action="" method="post">
+                                <td style="text-align:center; background-color:rgb(210, 210, 235);">
+                                    <input type="checkbox" name="notice2" id="notice2" onclick="checkone2()">
+                                </td>
+                            </form>
+                        </tr>
+                        {% empty %}
+                        <tr class="empty_">
+                            <td colspan="9" style="text-align:center; background-color:rgb(210, 210, 235); width: 800px;height:25px;">
+                                <label class="tooltip">暂无数据</label>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table></li>
+                    <!-- 低风险地区 -->
+				<li style="display: none;"> <!-- 表格 -->
+                    <table>
+                        <form action="" method="post"><button class="send-notice3"><a href="http://127.0.0.1:8000/app/email/">发送通知</a></button></form>
+                        <tr class="header">
+                            <td >学生姓名</td>
+                            <td >学号</td>
+                            <td >学院</td>
+                            <td >年级</td>
+                            <td >专业</td>
+                            <td >班级</td>
+                            <td >家庭住址</td>
+                            <td >风险等级</td>
+                            <td >通知<input type="checkbox" name="selall3" id="selall3" onclick="checkAll()">全选</td>
+                        </tr>
+                
+                        {% for stu in students %}
+                        <tr class="datas">
+                            <td >
+                                <label style="font-weight:bold;">{{ stu.stu_name }}</label>
+                            </td>
+                            <td >{{ stu.stu_id}}</td>
+                            <td >{{ stu.college }}</td>
+                            <td >{{ stu.grade }}</td>
+                            <td >{{ stu.major }}</td>
+                            <td >{{ stu.class_number }}</td>
+                            <!-- 家庭住址 -->
+                            <td >{{ stu. }}</td> 
+                            <!-- 风险等级 -->
+                            <td >{{ stu. }}</td>
+                            <!-- 通知 -->
+                            <form action="" method="post">
+                                <td style="text-align:center; background-color:rgb(210, 210, 235);">
+                                    <input type="checkbox" name="notice3" id="notice3" onclick="checkone3()">
+                                </td>
+                            </form>
+                        </tr>
+                        {% empty %}
+                        <tr class="empty_">
+                            <td colspan="9" style="text-align:center; background-color:rgb(210, 210, 235); width: 800px;height:25px;">
+                                <label class="tooltip">暂无数据</label>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table></li>
+                    <!-- 常态化防控地区 -->
+                <li style="display: none;"> <!-- 表格 -->
+                    <table>
+                        <form action="" method="post"><button class="send-notice4"><a href="http://127.0.0.1:8000/app/email/">发送通知</a></button></form>
+                        <tr class="header">
+                            <td >学生姓名</td>
+                            <td >学号</td>
+                            <td >学院</td>
+                            <td >年级</td>
+                            <td >专业</td>
+                            <td >班级</td>
+                            <td >家庭住址</td>
+                            <td >风险等级</td>
+                            <td >通知<input type="checkbox" name="selall4" id="selall4" onclick="checkAll()">全选</td>
+                        </tr>
+                
+                        {% for stu in students %}
+                        <tr class="datas">
+                            <td >
+                                <label style="font-weight:bold;">{{ stu.stu_name }}</label>
+                            </td>
+                            <td >{{ stu.stu_id}}</td>
+                            <td >{{ stu.college }}</td>
+                            <td >{{ stu.grade }}</td>
+                            <td >{{ stu.major }}</td>
+                            <td >{{ stu.class_number }}</td>
+                            <!-- 家庭住址 -->
+                            <td >{{ stu. }}</td> 
+                            <!-- 风险等级 -->
+                            <td >{{ stu. }}</td>
+                            <!-- 通知 -->
+                            <form action="" method="post">
+                                <td style="text-align:center; background-color:rgb(210, 210, 235);">
+                                    <input type="checkbox" name="notice4" id="notice4" onclick="checkone4()">
+                                </td>
+                            </form>
+                        </tr>
+                        {% empty %}
+                        <tr class="empty_">
+                            <td colspan="9" style="text-align:center; background-color:rgb(210, 210, 235); width: 800px;height:25px;">
+                                <label class="tooltip">暂无数据</label>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table></li>
+                    <!-- 疫情风险地区 -->
+                    <li style="display: none;">
+                        <table>
+                        <tr class="header">
+                            <td >省</td>
+                            <td >市</td>
+                            <td >县</td>
+                            <td >街道</td>
+                            <td >风险等级</td>
+                        </tr>
+                
+                        {% for city in citys %}
+                        <tr class="datas">
+                            <td >
+                                <label style="font-weight:bold;">{{city }}</label>
+                            </td>
+                            <td >{{ city}}</td>
+                            <td >{{ city }}</td>
+                            <td >{{ city }}</td>
+                            <td >{{ city }}</td>
+                           
+                        </tr>
+                        {% empty %}
+                        <tr class="empty_">
+                            <td colspan="5" style="text-align:center; background-color:rgb(210, 210, 235); width: 800px;height:25px;">
+                                <label class="tooltip">暂无数据</label>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </li>
+                    <!-- 疫情风险云图 -->
+                    <li style="display: none;">
+                        <a href="https://v.yuntus.com/tcv/e4Abe62Da6D242F843c180ddc8E4f291">疫情风险云图跳转</a>
+                    </li>
+			</ul>
+		</div>
+		<script>
+            
+            function checkAll1(){
+                let selall = document.querySelector("#selall1")
+                let checkboxs =document.querySelectorAll("#notice1")
+                let noticelen = checkboxs.length
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i = 0;i<noticelen;i++){
+                    if(selall.checked){
+                        checkboxs[i].checked = true
+                    }
+                    else{
+                        checkboxs[i].checked = false
+                    }
+                }
+            }
+            function checkAll2(){
+                let selall = document.querySelector("#selall2")
+                let checkboxs =document.querySelectorAll("#notice2")
+                let noticelen = checkboxs.length
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i = 0;i<noticelen;i++){
+                    if(selall.checked){
+                        checkboxs[i].checked = true
+                    }
+                    else{
+                        checkboxs[i].checked = false
+                    }
+                }
+            }
+            function checkAll3(){
+                let selall = document.querySelector("#selall3")
+                let checkboxs =document.querySelectorAll("#notice3")
+                let noticelen = checkboxs.length
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i = 0;i<noticelen;i++){
+                    if(selall.checked){
+                        checkboxs[i].checked = true
+                    }
+                    else{
+                        checkboxs[i].checked = false
+                    }
+                }
+            }
+            function checkAll4(){
+                let selall = document.querySelector("#selall4")
+                let checkboxs =document.querySelectorAll("#notice4")
+                let noticelen = checkboxs.length
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i = 0;i<noticelen;i++){
+                    if(selall.checked){
+                        checkboxs[i].checked = true
+                    }
+                    else{
+                        checkboxs[i].checked = false
+                    }
+                }
+            }
+            function checkone4(){
+                let selall = document.querySelector("#selall4")
+                let checkboxs =document.querySelectorAll("#notice4")
+                let noticelen = checkboxs.length
+                let count = 0
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i=0;i<noticelen;i++){
+                    //记录单选按钮为true的数量
+                    if(checkboxs[i].checked){
+                        count++;
+                    }
+                }
+                if( count == noticelen){
+                    selall.checked = true
+                }
+                else{
+                    selall.checked = false
+                }
+            }
+            function checkone1(){
+                let selall = document.querySelector("#selall1")
+                let checkboxs =document.querySelectorAll("#notice1")
+                let noticelen = checkboxs.length
+                let count = 0
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i=0;i<noticelen;i++){
+                    //记录单选按钮为true的数量
+                    if(checkboxs[i].checked){
+                        count++;
+                    }
+                }
+                if( count == noticelen){
+                    selall.checked = true
+                }
+                else{
+                    selall.checked = false
+                }
+            }
+            function checkone2(){
+                let selall = document.querySelector("#selall2")
+                let checkboxs =document.querySelectorAll("#notice2")
+                let noticelen = checkboxs.length
+                let count = 0
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i=0;i<noticelen;i++){
+                    //记录单选按钮为true的数量
+                    if(checkboxs[i].checked){
+                        count++;
+                    }
+                }
+                if( count == noticelen){
+                    selall.checked = true
+                }
+                else{
+                    selall.checked = false
+                }
+            }
+            function checkone3(){
+                let selall = document.querySelector("#selall3")
+                let checkboxs =document.querySelectorAll("#notice3")
+                let noticelen = checkboxs.length
+                let count = 0
+                // console.log(checkboxs);
+                // console.log(selall.checked);
+                for(let i=0;i<noticelen;i++){
+                    //记录单选按钮为true的数量
+                    if(checkboxs[i].checked){
+                        count++;
+                    }
+                }
+                if( count == noticelen){
+                    selall.checked = true
+                }
+                else{
+                    selall.checked = false
+                }
+            }
+			let title = document.getElementsByClassName('title')[0]
+			let content = document.getElementsByClassName('content')[0]
+			let titlelist = title.children
+			let contentlist = content.children
+			for(let i = 0; i < titlelist.length; i++){
+				let item = titlelist[i];
+				item.onclick = () => {
+					let active = title.getElementsByClassName('active')[0]
+					active.classList.remove('active')
+					item.classList.add("active")
+					
+					
+					for(let j = 0; j < titlelist.length; j++){
+					    contentlist[j].style.display = "none"
+					}
+					contentlist[i].style.display = "block"
+				}
+			}
+		</script>
+	</body>
+</html>
+

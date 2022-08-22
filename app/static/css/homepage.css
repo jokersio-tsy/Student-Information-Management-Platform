@@ -1,0 +1,91 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../image/页面背景.png) repeat-y ;
+}
+.tea_title{
+    Position:Reletive;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    height: 1.8rem;
+    margin: .125rem;
+}
+.tea_title p,a,img{
+    display: inline-block;
+}
+.tea_title img{
+    float: left;
+    margin-left: .375rem;
+    margin: .125rem;
+    width: 3.45rem;
+    height: 1.17rem;
+}
+.tea_title .con{
+    float: right;
+    width: 20%;
+    height: .35rem;
+    line-height: .35rem;
+    font-size: .3rem;
+    margin-top: .375rem;
+    margin: .125rem;
+    background-color: rgb(255, 255, 255);
+    border: .0125rem double rgb(0, 0, 0);
+    box-shadow: 0px 0px 20px #ddd;
+}
+.con p{
+    margin: 0%;
+    padding: 0;
+    height: 100%;
+}
+.con .logout{
+    float: right;
+    height: 100%;
+    background-color: darkgray;
+}
+.lst{
+    display: block;
+    position: relative;
+    margin-top: .25rem;
+    width: 100%;
+    font-size: .35rem;
+    color: rgb(0, 0, 0);
+    list-style-type: none;
+    text-align: center;
+}
+.d1,.d2,.d3,.d4{
+    display: inline;
+    background-color: transparent;
+    margin: .3rem;
+    margin-left: .625rem;
+    margin-right: .625rem;
+    width: 2.1rem;
+    text-align: center;
+    font-size: .5rem;
+    border: .025rem double rgb(255, 255, 255);
+    box-shadow: 0px 0px 20px #ddd;
+
+    transform: translate(-50%, -50%);
+}
+.lst p{
+    margin: 0;
+    padding: 0;
+}
+.d1img,.d2img,.d3img,.d4img{
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.title{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px 0px;
+    line-height: 40px;
+    height: 40px;
+    cursor: move;
+    position: relative;
+    
+}
+a{
+    color: black;
+    text-decoration: none;
+}

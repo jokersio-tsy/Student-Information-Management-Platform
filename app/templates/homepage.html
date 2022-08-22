@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/homepage.css' %}" />
+    <script type="text/javascript" src="{% static 'js/easyanimate.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/picturesshowinturn.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+    <style>
+        .arrow-l,
+        .arrow-r {
+            display: none;
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 24px;
+            height: 40px;
+            background: rgba(0, 0, 0, .3);
+            text-align: center;
+            line-height: 40px;
+            color: #fff;
+            font-family: 'icomoon';
+            font-size: 18px;
+            z-index: 2;
+        }
+        .arrow-r {
+            right: 0;
+        }
+        .focus {
+            display: block;
+            text-align: center;
+            position: relative;
+            left: 13%;
+            margin-left: .125rem;
+            width:  17rem;
+            height: 7rem;
+            background-color: rgb(255, 255, 255);
+            overflow: hidden;
+            margin-top: .125rem;
+            margin-bottom: .125rem;
+        }
+        .focus ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 700%;
+        }
+
+        .focus ul li {
+            list-style-type: none;
+            float: left;
+        }
+
+        .circle {
+            list-style-type: none;
+            position: absolute;
+            bottom: .125rem;
+            left: .625rem;
+            z-index: 3;
+        }
+        a{
+            text-decoration: none;
+        }
+        .circle li {
+            float: left;
+            width: 8px;
+            height: 8px;
+            /*background-color: #fff;*/
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin: 0 3px;
+            border-radius: 50%;
+            /*鼠标经过显示小手*/
+            cursor: pointer;
+        }
+        .img1,
+        .img2,
+        .img3,
+        .img4{
+            width:  17rem;
+            height: 7rem;
+        }
+        .current{
+            background-color: #fff;
+        }
+        .clearb {
+            clear: both; /*clear: both add to the last sibling can clear float*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tea_title">
+        <img src="{% static 'image/重大logo.png' %}" class="cquimg" alt="">
+        <div class="con">
+            <p>欢迎您，{{teacher.tea_name}}</p>
+            <a class="logout" href="/app/logout/">退出登录</a>
+        </div>
+    </div>
+
+    <div class="focus">
+        <!-- 左侧按钮 -->
+        <a href="javascript:;" class="arrow-l">
+            <
+        </a>
+        <!-- 右侧按钮 -->
+        <a href="javascript:;" class="arrow-r"> > </a>
+        <!-- 核心的滚动区域 -->
+        <ul>
+            <li>
+                <a href="#"><img src="{% static 'image/1.jpg' %}" class="img1" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'image/2.jpeg' %}" class="img2" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'image/3.png' %}" class="img3" alt=""></a>
+            </li>
+            <li>
+                <a href="#"><img src="{% static 'image/4.jpeg' %}" class="img4" alt=""></a>
+            </li>
+        </ul>
+        <!-- 小圆圈 -->
+        <ol class="circle">
+
+        </ol>
+        
+    </div>
+
+    <!-- 功能图标和链接 -->
+    <div class="lst">
+        <div class="d1">
+            <a id='link' href="/app/queryAll/"><img src="{% static 'image/信息管理.png' %}" class="d1img" alt=""><p>信息管理</p></a>
+        </div>
+        <div class="d2">
+            <a id='link' href="/app/gotoinformation_getter_web/"><img src="{% static 'image/信息录入.png' %}" class="d2img" alt=""><p>信息录入</p></a>
+        </div>
+        <div class="d3">
+            <a id='link' href="/app/gotoepidemic_ctrl/"><img src="{% static 'image/疫情防控.png' %}" class="d3img" alt=""><p>疫情防控</p></a>
+            
+        </div>
+        <div class="d4">
+            <a id='link' href="https://v.yuntus.com/tcv/3859CeD2b1Ea7D471F9e3D7c13339BF0"><img src="{% static 'image/可视化.png' %}" class="d4img" alt=""><p>可视化系统</p></a>
+            
+        </div>
+        <div class="clearb"></div>
+    </div>
+
+
+     <!-- <div class="showqr">
+        <div class="title">
+            <span><a href="javascript:void(0);" class="close-login">关闭</a></span>
+        </div>
+        <img src="/app/makeqrcode/" class="qr_img" width="300px" height="300px;">
+    </div> -->
+    <!-- 遮盖层 -->
+    <!-- <div id="bg" class="login-bg"></div>
+    <script>
+        var alink = document.querySelector('#link');
+        var login = document.querySelector('.showqr');
+        var bg = document.querySelector('#bg');
+        var closebtn = document.querySelector('.close-login')
+        var title = document.querySelector('.title');
+        // 点击弹出层这个链接 link  让mask 和login 显示出来
+        alink.addEventListener('click', function () {
+            bg.style.display = 'block';
+            login.style.display = 'block';
+        })
+        // 点击 closeBtn 就隐藏 mask 和 login 
+        closebtn.addEventListener('click', function () {
+            bg.style.display = 'none';
+            login.style.display = 'none';
+        })
+        // 拖拽事件
+        // 按下鼠标左键:获得x为鼠标到login盒子左部的距离,y为login到盒子顶部的距离
+        title.addEventListener('mousedown', function (e) {
+            var x = e.pageX - login.offsetLeft;
+            var y = e.pageY - login.offsetTop;
+            // 鼠标移动函数:login到窗口左部的距离即为鼠标到窗口左部的距离减去x，要加上字符串px
+            function move(e) {
+                login.style.left = e.pageX - x + 'px';
+                login.style.top = e.pageY - y + 'px';
+            }
+            document.addEventListener('mousemove', move);
+            // 鼠标弹起，将移动事件remove
+            document.addEventListener('mouseup', function () {
+                document.removeEventListener('mousemove', move);
+            })
+        })
+    </script>  -->
+</body>
+
+</html>

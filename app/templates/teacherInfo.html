@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <ul>
+    <h4>教师信息</h4>
+        {% for t in teacher  %}
+        <li>
+            工号：{{ t.tea_id }}<br />
+            学院：{{ t.college }}<br />
+            性别：{{ t.tea_gender }}<br />
+            姓名：{{ t.tea_name }}<br />
+            密码：{{ t.password }}<br />
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>

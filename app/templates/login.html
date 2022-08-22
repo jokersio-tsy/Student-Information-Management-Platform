@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/flexible.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <style>
+        #div1{
+            position:relative;
+            text-align: center;
+        }
+    </style>
+</head>
+<body> 
+    <!-- 登录 ,action未填 -->
+    <div align="center">
+        <img src="{% static 'image/logo.png' %}" height="100px" width="300px"/>
+    </div>
+    <form action="/app/login/" method="post" class="login_submit" name="login_submit">
+        <h2>账号登录</h2>
+        <div class="login">
+            <div class="inputcontent">
+                <div id="div1">
+                    <img src="{% static 'image/user.png' %}" height="120px" width="120px" />
+                </div>
+                <div class="logininput">
+                    <label for="">工号</label>
+                    <input type="text" placeholder="请输入您的工号" name="tea_id" id="tea_id" class="listinput">
+                </div>
+                <div class="logininput">
+                    <label for="">密码</label>
+                    <input type="password" placeholder="请输入密码" name="password" id="password" class="listinput">
+                </div>
+            </div>
+            <div class="loginbtn">
+                <button type="submit">登录</button>
+                <a id='link1' href="javascript:;">前往注册</a> 
+            </div>
+            {{ message }}
+        </div>
+    </form>
+    <!-- 注册 ,action未填 -->
+    <form action="/app/register/" method="post" class="register_submit" name="register_submit">
+        <h2>账号注册</h2>
+        <div class="register">
+            <div class="inputcontent">
+                <div class="registerinput">
+                    <label for="">学院</label>
+                    <input type="text" placeholder="请输入您所在的学院" name="college" id="college" class="listinput">
+                </div>
+                <div class="registerinput">
+                    <label for="">姓名</label>
+                    <input type="text" placeholder="请输入您的姓名" name="tea_name" id="tea_name" class="listinput">
+                </div>
+                <div class="registerinput">
+                    <label for="">工号</label>
+                    <input type="text" placeholder="请输入您的工号" name="tea_id" id="tea_id" class="listinput">
+                </div>
+                <div class="registerinput">
+                    <label for="">性别</label>
+                    <input type="text" placeholder="请输入性别" name="tea_gender" id="tea_gender" class="listinput" list="teagender" required>
+                    <datalist id="teagender" >
+                        <option>男</option>
+                        <option>女</option>
+                    </datalist>
+                </div>
+                <div class="registerinput">
+                    <label for="">密码</label>
+                    <input type="password" placeholder="请输入密码" name="password" id="password" class="listinput" onchange="check_password()">
+                    <p class="len_err" style="color:red"></p>
+                </div>
+                <div class="registerinput">
+                    <label for="">确认密码</label>
+                    <input type="password" placeholder="请输入密码" name="password_again" id="password_again" class="listinput"  onchange="check_password()">
+                    <p class="not_same_err" style="color:red"></p>
+                </div>
+                <script>
+                    function check_password1(){
+                        var timer = null; // 创建一个空对象 定时器
+                        timer = setInterval(function(){
+                            var pa1 = document.querySelector("#password");
+                            var pa2 = document.querySelector("#password_again");
+                            var len_err = document.querySelector(".len_err");
+                            if(pa1.value.length == 0){
+                                len_err.innerHTML = "";
+                            }
+                            else if(pa1.value.length > 18 | pa1.value.length < 6){
+                                len_err.innerHTML = "密码长度不正确，需在6~18位之间";
+                            }
+                            else{
+                                len_err.innerHTML = "";
+                            }
+
+                        },1000)
+                    }
+
+                    function check_password2() {
+                        var timer = null; // 创建一个空对象 定时器
+                        timer = setInterval(function () {
+                            var pa1 = document.querySelector("#password");
+                            var pa2 = document.querySelector("#password_again");
+                            var not_same_err = document.querySelector(".not_same_err");
+                            if (pa1.value != pa2.value) {
+                                not_same_err.innerHTML = "两次输入的密码不一致"
+                            } else {
+                                not_same_err.innerHTML = ""
+                            }
+                        }, 1000)
+                    }
+
+                    /*
+                    function check_password(){
+                        var pa1 = document.querySelector("#password");
+                        var pa2 = document.querySelector("#password_again");
+                        var len_err = document.querySelector(".len_err");
+                        if(pa1.value.length > 18 | pa1.value.length < 6){
+                            len_err.innerHTML = "密码长度不正确，需在6~18位之间";
+                        }
+                        else{
+                            len_err.innerHTML = "";
+                        }
+                        var not_same_err = document.querySelector(".not_same_err");
+                        if(pa1.value != pa2.value){
+                            not_same_err.innerHTML = "  两次输入的密码不一致"
+                        }
+                        else{
+                            not_same_err.innerHTML = ""
+                        }
+                    }*/
+
+
+
+                </script>
+            </div>
+            <div class="registerbtn">
+                <button type="submit">注册</button>
+                <a id='link2' href="javascript:;">返回登录</a> 
+            </div>
+            
+        </div>
+    </form>
+    <script>
+        var switch1 = document.querySelector('#link1');
+        var switch2 = document.querySelector('#link2');
+        var login_sub = document.querySelector('.login_submit');
+        var register_sub = document.querySelector('.register_submit');
+
+        switch1.addEventListener('click',function(){
+            login_sub.style.display = 'none'
+            register_sub.style.display = 'block'
+        });
+        switch2.addEventListener('click',function(){
+            login_sub.style.display = 'block'
+            register_sub.style.display = 'none'
+        }); 
+
+    </script>
+</body>
+</html>

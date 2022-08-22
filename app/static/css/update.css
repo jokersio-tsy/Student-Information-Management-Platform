@@ -1,0 +1,94 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../image/bg2.jpg) no-repeat top center;
+}
+
+p{
+    vertical-align:baseline;
+    width: 80%;
+    color: black;
+    font-size: 18px;
+}
+h1{
+    color: black;
+    position: relative;
+    left: 40%;
+    margin-top: 1.5%;
+    margin-bottom: 2.5%;
+    font-size: 42px;
+}
+
+#update{
+    position: relative;
+    left: 37%;
+}
+
+.btnsubmit{
+    width: 8%;
+    height: 2%;
+    font-size: 16px;
+}
+
+input{
+    width: 15%;
+    height: 100%;
+
+}
+
+.imgp img{
+    width: 125px;
+    height: 125px;
+    margin: 10px;
+    margin-top: 5px;
+}
+
+.info label{
+    float: left;
+    width: 90px;
+    padding-right: 0px;
+    text-align: right;
+    line-height: 20px;
+    height: 20px;
+    font-size: 18px;
+}
+.info input.listinput{
+    float: left;
+    line-height: 20px;
+    height: 20px;
+    width: 170px;
+    border: #ebebeb 1px solid;
+    text-indent: 5px;
+}
+
+.tp{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.8em; 
+    font-family: 'Microsoft YaHei';
+    color: aliceblue;
+}
+
+.head{
+    display: block;
+    height: 1.25rem;
+    width: 100%;
+    cursor: pointer;
+}
+.returnimg{
+    display: inline-block;
+    margin-top: .125rem;
+    margin-left: .125rem;
+    width: .625rem;
+    height: .625rem;
+
+}
+.head p{
+    position: absolute;
+    top: .25rem;
+    display: inline-block;
+    width: 1.625rem;
+    height: .625rem;
+    font-size: .3125rem;
+}

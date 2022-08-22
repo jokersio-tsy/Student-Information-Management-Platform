@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: url(../image/页面背景.png) no-repeat top center;
+}
+a{
+    text-decoration:none;
+}
+.login_submit{
+    width: 60%;
+    height: 70%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+.register_submit{
+    display: none;
+    width: 60%;
+    height: 70%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+}
+.login{
+    width: 40%;
+    height: 55%;
+    border: #ebebeb solid 1px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px #ddd;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+.register{
+    width: 45%;
+    height: 60%;
+    border: #ebebeb solid 1px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    background: #ffffff;
+    box-shadow: 0px 0px 20px #ddd;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+.inputcontent{
+    margin-top: 20px;
+}
+.login .loginbtn{
+    
+    width: 50%;
+    margin: 30px auto 0px auto;
+    line-height: 40px;
+    font-size: 14px;
+    border: #ebebeb 1px solid;
+    text-align: center;
+}
+#link1,#link2{
+    margin-left: 20px;
+}
+.registerbtn{
+    width: 50%;
+    margin: 30px auto 0px auto;
+    line-height: 40px;
+    font-size: 14px;
+    border: #ebebeb 1px solid;
+    text-align: center;
+}
+.logininput{
+    overflow: hidden;
+    margin: 0px 0px 20px 0px;
+}
+.registerinput{
+    overflow: hidden;
+    margin: 0px 0px 20px 0px;
+}
+.logininput label{
+    float: left;
+    width: 90px;
+    padding-right: 10px;
+    text-align: right;
+    line-height: 35px;
+    height: 35px;
+    font-size: 14px;
+}
+.registerinput label{
+    float: left;
+    width: 90px;
+    padding-right: 10px;
+    text-align: right;
+    line-height: 35px;
+    height: 35px;
+    font-size: 14px;
+}
+.logininput input.listinput{
+    float: left;
+    line-height: 35px;
+    height: 35px;
+    width: 350px;
+    border: #ebebeb 1px solid;
+    text-indent: 5px;
+}
+.registerinput input.listinput{
+    float: left;
+    line-height: 35px;
+    height: 35px;
+    width: 350px;
+    border: #ebebeb 1px solid;
+    text-indent: 5px;
+}
+.p1 {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    width: 24px;
+}
+li {
+    font-size: 150%
+}
